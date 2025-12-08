@@ -31,7 +31,7 @@ export class TareaService {
   }
 
   actualizarTarea(id:number, tarea:any){
-    return this.httpclient.put(`${this.apiUrl}/${id}`, tarea);
+    return this.httpclient.put(`${this.apiUrl}/${id}`, tarea, {headers: this.httpHeaders});
   }
 
 }
