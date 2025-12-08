@@ -1,0 +1,29 @@
+<h2>Lista de Tareas</h2>
+<button class="btn btn-success" routerLink="/ingresar-tarea">Agregar Tarea</button>
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Id</th>
+            <th>Descripción</th>
+            <th>Estado</th>
+            <th>Prioridad</th>
+            <th>Responsable</th>
+            <th>Proyecto</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let tarea of tareas" >
+            <td>{{tarea.id}}</td>
+            <td>{{tarea.descripcion}}</td>
+            <td>{{tarea.estado}}</td>
+            <td>{{tarea.prioridad}}</td>
+            <td>{{tarea.responsable.nombre}}</td>
+            <td>{{tarea.proyecto.nombreProyecto}}</td>
+            <td>
+                <button class="btn btn-success" (click)="editarTarea(tarea)">Editar</button>
+                <button class="btn btn-danger" (click)="eliminarTarea(tarea)">Eliminar</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

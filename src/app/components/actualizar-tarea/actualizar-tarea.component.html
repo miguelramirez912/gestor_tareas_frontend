@@ -1,0 +1,42 @@
+<div class="col-md-6 offset-md-3">
+    <h3>Actualizar de Tarea</h3>
+    <!-- <div *ngIf="listasApiCargadas"> -->
+        <form (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label>Descripción</label>
+                <input type="text" class="form-control" name="nombre" id="descripcion" [(ngModel)]="tarea.descripcion">
+            </div>
+            <div class="form-group">
+                <label>Estado</label>
+                <select class="form-control" [(ngModel)]="tarea.estado" name="estado">
+                    <option *ngFor="let estado of listaEstados">
+                        {{estado}}
+                    </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Priodad:</label>
+                <select class="form-control" [(ngModel)]="tarea.prioridad" name="prioridad">
+                    <option *ngFor="let prioridad of listaPrioridad">{{prioridad}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Responsable:</label>
+                <select class="form-control" [(ngModel)]="tarea.responsable" name="responsable" >
+                    <option *ngFor="let responsable of listaResponsables" [value]="responsable.id">{{responsable.nombre}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Proyecto:</label>
+                <select class="form-control" [(ngModel)]="tarea.proyecto" name="proyecto" >
+                    <option *ngFor="let proyecto of listaProyectos" [value]="proyecto.id">{{proyecto.nombreProyecto}}</option>
+                </select>
+            </div>
+            <button class="btn btn-success">Guardar</button>
+        </form>
+    <!-- </div> -->
+<!-- </div> -->
+<!-- <div *ngIf="!listasApiCargadas">Cargando opciones....</div> -->
+
+
+

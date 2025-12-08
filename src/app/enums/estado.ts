@@ -1,0 +1,6 @@
+export enum Estado {
+  NUEVO = 'NUEVO',
+  EN_PROGRESO = 'EN_PROGRESO',
+  CERRADO = 'CERRADO',
+  RECHAZADO = 'RECHAZADO'
+}
