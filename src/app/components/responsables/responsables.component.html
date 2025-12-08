@@ -1,1 +1,26 @@
-<p>responsables works!</p>
+<h2>Lista de Responsables</h2>
+<button class="btn btn-success" routerLink="/ingresar-responsable">Agregar Responsable</button>
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Puesto</th>
+            <th>Departamento</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let responsable of responsables" >
+            <td>{{responsable.id}}</td>
+            <td>{{responsable.nombre}}</td>
+            <td>{{responsable.puesto.nombrePuesto}}</td>
+            <td>{{responsable.departamento.nombreDepartamento}}</td>
+            <td>
+                <button class="btn btn-success" (click)="editarResponsable(responsable)">Editar</button>
+                <button class="btn btn-danger" (click)="eliminarResponsable(responsable)">Eliminar</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+

@@ -1,6 +1,9 @@
+import { Departamento } from "./interfaces/departamento";
+import { Puesto } from "./interfaces/puesto";
+
 export class Responsable {
     id!: number;
     nombre!: String;
-    puestoId!: number;
-    departamentoId!: number
+    puesto!: Puesto;
+    departamento!: Departamento;
 }

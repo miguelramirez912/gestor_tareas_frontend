@@ -10,6 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { IngresarTareaComponent } from './components/ingresar-tarea/ingresar-tarea.component';
 import { FormsModule } from '@angular/forms';
 import { ActualizarTareaComponent } from './components/actualizar-tarea/actualizar-tarea.component';
+import { ActualizarResponsableComponent } from './components/actualizar-responsable/actualizar-responsable.component';
+import { IngresarResponsableComponent } from './components/ingresar-responsable/ingresar-responsable.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { ActualizarTareaComponent } from './components/actualizar-tarea/actualiz
     ResponsablesComponent,
     NavbarComponent,
     IngresarTareaComponent,
-    ActualizarTareaComponent
+    IngresarResponsableComponent,
+    ActualizarTareaComponent,
+    ActualizarResponsableComponent,
   ],
   imports: [
     BrowserModule,

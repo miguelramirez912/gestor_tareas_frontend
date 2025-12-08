@@ -18,7 +18,6 @@ export class TareaService {
   }
 
   createTarea(tarea:any):Observable<Object>{
-    console.log("ejecutando post tarea a bd")
     return this.httpclient.post(this.apiUrl, tarea, {headers: this.httpHeaders});
   }
 

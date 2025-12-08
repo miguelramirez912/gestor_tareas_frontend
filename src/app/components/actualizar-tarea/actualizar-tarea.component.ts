@@ -81,8 +81,8 @@ export class ActualizarTareaComponent implements OnInit {
         descripcion: this.tarea.descripcion,
         prioridad: this.tarea.prioridad,
         estado: this.tarea.estado,
-        responsable: {id: this.tarea.responsable},
-        proyecto: {id: this.tarea.proyecto}
+        responsable: this.tarea.responsable,
+        proyecto: this.tarea.proyecto
       }
       console.log(payload)
       this.tareaService.actualizarTarea(this.id, payload).subscribe(data => {

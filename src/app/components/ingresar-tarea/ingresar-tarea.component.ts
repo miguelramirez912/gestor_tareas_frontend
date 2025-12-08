@@ -64,8 +64,6 @@ export class IngresarTareaComponent implements OnInit {
     })
   }
 
-
-
   onSubmit(): void{
     this.guardarTarea();
   }
