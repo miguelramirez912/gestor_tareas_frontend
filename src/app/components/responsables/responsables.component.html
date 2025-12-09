@@ -1,8 +1,8 @@
 <h2>Lista de Responsables</h2>
-<button class="btn btn-success" routerLink="/ingresar-responsable">Agregar Responsable</button>
+<button class="btn btn-primary mb-2" routerLink="/ingresar-responsable">Agregar Responsable</button>
 <table class="table table-striped">
     <thead class="table-dark">
-        <tr>
+        <tr class="text-center">
             <th>Id</th>
             <th>Nombre</th>
             <th>Puesto</th>
@@ -17,7 +17,7 @@
             <td>{{responsable.puesto.nombrePuesto}}</td>
             <td>{{responsable.departamento.nombreDepartamento}}</td>
             <td>
-                <button class="btn btn-success" (click)="editarResponsable(responsable)">Editar</button>
+                <button class="btn btn-success me-2" (click)="editarResponsable(responsable)">Editar</button>
                 <button class="btn btn-danger" (click)="eliminarResponsable(responsable)">Eliminar</button>
             </td>
         </tr>

@@ -18,6 +18,7 @@ export class IngresarResponsableComponent implements OnInit {
   responsable:Responsable = new Responsable();
   listaDePuestos!:Puesto[];
   listaDeDepartamentos!:Departamento[];
+  puestoDefault = {id: 0, nombrePuesto: "Selecciona una opcion"}
 
   constructor(private responsableService:ResponsableService, private puestoService:PuestoService, private departamentoService:DepartamentoService, private router:Router ){}
 
@@ -58,4 +59,7 @@ export class IngresarResponsableComponent implements OnInit {
     this.guardarResponsable();
   }
 
+  cancelar(){
+    
+  }
 }

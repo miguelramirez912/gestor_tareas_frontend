@@ -23,6 +23,7 @@ export class ActualizarTareaComponent implements OnInit {
     listaResponsables: any[] = [];
     listaProyectos: any[] = []
     id:any = null;
+    formularioEstaLleno:boolean = false;
   
     constructor(private tareaService: TareaService, private responsableService: ResponsableService, private proyectoService: ProyectoService, private router: Router, private activatedRoute:ActivatedRoute){}
   
@@ -37,7 +38,7 @@ export class ActualizarTareaComponent implements OnInit {
       setTimeout(() => {
         this.llenarFormulario();
         
-      }, 2000);
+      }, 500);
     }
   
     traerOpcionesResponsable(){
@@ -70,6 +71,7 @@ export class ActualizarTareaComponent implements OnInit {
         this.tarea.prioridad = response.prioridad;
         this.tarea.responsable = responsableSeleccionado!;
         this.tarea.proyecto = proyectoSeleccionado!;
+        this.formularioEstaLleno = true;
       });
     }
   
@@ -90,5 +92,9 @@ export class ActualizarTareaComponent implements OnInit {
   
     onSubmit(): void{
       this.actualizarTarea();
+    }
+
+    cancelar(){
+    
     }
 }

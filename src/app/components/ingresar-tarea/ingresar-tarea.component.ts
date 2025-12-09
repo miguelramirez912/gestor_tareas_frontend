@@ -68,4 +68,8 @@ export class IngresarTareaComponent implements OnInit {
     this.guardarTarea();
   }
 
+  cancelar(){
+    
+  }
+
 }
