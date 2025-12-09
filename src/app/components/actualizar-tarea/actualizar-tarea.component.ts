@@ -34,10 +34,10 @@ export class ActualizarTareaComponent implements OnInit {
       this.traerOpcionesResponsable();
       this.id = this.activatedRoute.snapshot.paramMap.get('id');
       console.log("El id es : " + this.id);
-      // setTimeout(() => {
+      setTimeout(() => {
+        this.llenarFormulario();
         
-      // }, 2000);
-      this.llenarFormulario();
+      }, 2000);
     }
   
     traerOpcionesResponsable(){
@@ -69,8 +69,6 @@ export class ActualizarTareaComponent implements OnInit {
         this.tarea.estado = response.estado;
         this.tarea.prioridad = response.prioridad;
         this.tarea.responsable = responsableSeleccionado!;
-        console.log("responsable seleccionado: ")
-        console.log(responsableSeleccionado);
         this.tarea.proyecto = proyectoSeleccionado!;
       });
     }

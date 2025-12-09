@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Departamento } from 'src/app/models/interfaces/departamento';
 import { Puesto } from 'src/app/models/interfaces/puesto';
 import { Responsable } from 'src/app/models/responsable';
@@ -17,13 +17,18 @@ export class ActualizarResponsableComponent implements OnInit {
     responsable:Responsable = new Responsable();
     listaDePuestos!:Puesto[];
     listaDeDepartamentos!:Departamento[];
+    id!:any;
 
-  constructor(private puestoService:PuestoService, private departamentoService:DepartamentoService, private responsableService:ResponsableService, private router:Router){}
+  constructor(private puestoService:PuestoService, private departamentoService:DepartamentoService, private responsableService:ResponsableService, private router:Router, private activatedRoute:ActivatedRoute){}
 
   ngOnInit(): void {
     this.traerListaPuestos();
     this.traerListaDepartamentos();
     console.log(this.responsable);
+    this.id = this.activatedRoute.snapshot.paramMap.get("id");
+    setTimeout(() => {
+      this.llenarFormulario();
+    }, 2000);
   }
 
   traerListaPuestos(){
@@ -40,21 +45,38 @@ export class ActualizarResponsableComponent implements OnInit {
     })
   }
 
-    guardarResponsable(){
+    actualizarResponsable(){
     const payload = {
       nombre: this.responsable.nombre,
-      puesto: {id: this.responsable.puesto},
-      departamento: {id: this.responsable.departamento}
+      puesto: this.responsable.puesto,
+      departamento: this.responsable.departamento
     }
+    console.log("payload:")
     console.log(payload);
-    this.responsableService.createResponsable(payload).subscribe( response => {
+    this.responsableService.actualizarResponsable(this.id, payload).subscribe( response => {
       console.log(response);
       this.router.navigate(['/responsables']);
     })
   }
 
+  llenarFormulario(){
+    console.log("Se inicia llenado de formulario");
+    this.responsableService.getResponsable(this.id).subscribe(response => {
+      const puestoSeleccionado = this.listaDePuestos.find(puesto => puesto.id == response.puesto.id)
+      const departamentoSeleccionado = this.listaDeDepartamentos.find( depa => depa.id === response.departamento.id)
+      console.log(puestoSeleccionado);
+      console.log(departamentoSeleccionado);
+      this.responsable.id = response.id;
+      this.responsable.nombre = response.nombre;
+      this.responsable.puesto = puestoSeleccionado!;
+      this.responsable.departamento = departamentoSeleccionado!;
+      console.log(this.responsable);
+    })
+
+  }
+
   onSubmit(){
-    this.guardarResponsable();
+    this.actualizarResponsable();
   }
 
 }
