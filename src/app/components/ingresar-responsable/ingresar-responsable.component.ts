@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
 import { Departamento } from 'src/app/models/interfaces/departamento';
 import { Puesto } from 'src/app/models/interfaces/puesto';
 import { Responsable } from 'src/app/models/responsable';
@@ -14,6 +15,7 @@ import { ResponsableService } from 'src/app/services/responsable.service';
 })
 
 export class IngresarResponsableComponent implements OnInit {
+  @ViewChild('exito') exito!: SwalComponent;
 
   responsable:Responsable = new Responsable();
   listaDePuestos!:Puesto[];
@@ -51,6 +53,7 @@ export class IngresarResponsableComponent implements OnInit {
     console.log(payload);
     this.responsableService.createResponsable(payload).subscribe( response => {
       console.log(response);
+      this.exito.fire();
       this.router.navigate(['/responsables']);
     })
   }
@@ -60,6 +63,6 @@ export class IngresarResponsableComponent implements OnInit {
   }
 
   cancelar(){
-    
+    this.router.navigate(['/responsables']);
   }
 }

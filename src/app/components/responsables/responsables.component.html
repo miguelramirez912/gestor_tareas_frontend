@@ -1,5 +1,7 @@
 <h2>Lista de Responsables</h2>
-<button class="btn btn-primary mb-2" routerLink="/ingresar-responsable">Agregar Responsable</button>
+<div class="d-flex justify-content-end">
+    <button class="btn btn-primary mb-2" routerLink="/ingresar-responsable">Agregar Responsable</button>
+</div>
 <table class="table table-striped">
     <thead class="table-dark">
         <tr class="text-center">
@@ -23,4 +25,7 @@
         </tr>
     </tbody>
 </table>
+<swal #exito title="¡Éxito!" icon="success" text="Registro eliminado"></swal>
+<swal #erroreliminar title="¡Error!" icon="warning" text="No se pudo eliminar el registro. El Responsable ya ha sido asignado a una Tarea"></swal>
+
 

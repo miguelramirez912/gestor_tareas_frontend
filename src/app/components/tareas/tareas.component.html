@@ -1,5 +1,7 @@
 <h2>Lista de Tareas</h2>
-<button class="btn btn-primary mb-2" routerLink="/ingresar-tarea">Agregar Tarea</button>
+<div class="d-flex justify-content-end">
+    <button class="btn btn-primary mb-2" routerLink="/ingresar-tarea">Agregar Tarea</button>
+</div>
 <table class="table table-striped">
     <thead class="table-dark">
         <tr class="text-center">
@@ -27,3 +29,5 @@
         </tr>
     </tbody>
 </table>
+<swal #exito title="¡Éxito!" icon="success" text="Registro eliminado."></swal>
+

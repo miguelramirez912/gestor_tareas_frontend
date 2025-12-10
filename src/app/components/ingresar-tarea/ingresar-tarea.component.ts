@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
 import { Estado } from 'src/app/enums/estado';
 import { Prioridad } from 'src/app/enums/prioridad';
 import { Proyecto } from 'src/app/models/interfaces/proyecto';
@@ -16,6 +17,7 @@ import { TareaService } from 'src/app/services/tarea.service';
   styleUrls: ['./ingresar-tarea.component.css']
 })
 export class IngresarTareaComponent implements OnInit {
+  @ViewChild('exito') exito!: SwalComponent;
 
   tarea: Tarea = new Tarea();
   
@@ -60,7 +62,8 @@ export class IngresarTareaComponent implements OnInit {
   }
     this.tareaService.createTarea(payload).subscribe(data => {
       console.log(payload)
-      this.router.navigate(['/tareas'])
+      this.exito.fire();
+      this.router.navigate(['/tareas']);
     })
   }
 
@@ -69,7 +72,7 @@ export class IngresarTareaComponent implements OnInit {
   }
 
   cancelar(){
-    
+    this.router.navigate(['/tareas']);
   }
 
 }

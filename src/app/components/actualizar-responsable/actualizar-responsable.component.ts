@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
 import { Departamento } from 'src/app/models/interfaces/departamento';
 import { Puesto } from 'src/app/models/interfaces/puesto';
 import { Responsable } from 'src/app/models/responsable';
@@ -13,6 +14,8 @@ import { ResponsableService } from 'src/app/services/responsable.service';
   styleUrls: ['./actualizar-responsable.component.css']
 })
 export class ActualizarResponsableComponent implements OnInit {
+
+    @ViewChild('exito') exito!: SwalComponent;
 
     responsable:Responsable = new Responsable();
     listaDePuestos!:Puesto[];
@@ -56,6 +59,7 @@ export class ActualizarResponsableComponent implements OnInit {
     console.log(payload);
     this.responsableService.actualizarResponsable(this.id, payload).subscribe( response => {
       console.log(response);
+      this.exito.fire();
       this.router.navigate(['/responsables']);
     })
   }
@@ -82,7 +86,7 @@ export class ActualizarResponsableComponent implements OnInit {
   }
 
   cancelar(){
-    
+    this.router.navigate(['/responsables']);
   }
 
 }

@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { ActualizarTareaComponent } from './components/actualizar-tarea/actualizar-tarea.component';
 import { ActualizarResponsableComponent } from './components/actualizar-responsable/actualizar-responsable.component';
 import { IngresarResponsableComponent } from './components/ingresar-responsable/ingresar-responsable.component';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { IngresarResponsableComponent } from './components/ingresar-responsable/
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    SweetAlert2Module.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
